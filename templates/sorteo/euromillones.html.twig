@@ -1,0 +1,20 @@
+{# templates/sorteo/numero.html.twig #}
+{% extends 'sorteo/estructuraBase.html.twig' %}
+
+{% block titulo %}Euromillones{% endblock %}
+
+{% block contenido %}
+<h1>Euromillones</h1>
+<h2>Números</h2>
+<ul>
+{% for numero in numeros %}
+    <li>{{ numero }}</li>
+{% endfor %}
+</ul>
+<h2>Estrellas</h2>
+<ul>
+{% for estrella in estrellas %}
+    <li>{{ estrella }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

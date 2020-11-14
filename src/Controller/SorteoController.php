@@ -33,4 +33,34 @@ class SorteoController extends AbstractController
             'resultado' => $numero1 + $numero2,
         ]);
     }
+
+    public function euromillones()
+    {
+        $numeros = array();
+        $estrellas = array();
+        $i = 0;
+        while ($i < 5) {
+            $numero = random_int(1,50);
+            if (!in_array($numero, $numeros)) {
+                $numeros[] = $numero;
+                $i++;
+            }
+        }
+        sort($numeros);
+
+        $i = 0;
+        while ($i < 2) {
+            $estrella = random_int(1,12);
+            if (!in_array($estrella, $estrellas)) {
+                $estrellas[] = $estrella;
+                $i++;
+            }
+        }
+        sort($estrellas);
+
+        return $this->render('sorteo/euromillones.html.twig', [
+            'estrellas' => $estrellas,
+            'numeros' => $numeros
+        ]);
+    }
 }

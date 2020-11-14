@@ -16,3 +16,7 @@ app_suma:
     defaults:
         numero1: 2
         numero2: 2
+
+app_euromillones:
+    path: /sorteo/euromillones
+    controller: App\Controller\SorteoController::euromillones
