@@ -1,5 +1,9 @@
 # config/routes.yaml
 
+index:
+    path: /
+    controller: App\Controller\SorteoController::index
+
 app_numero_sorteo:
     path: /sorteo/numero/{maximo}
     controller: App\Controller\SorteoController::numero
