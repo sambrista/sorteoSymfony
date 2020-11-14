@@ -14,4 +14,13 @@ class SorteoController extends AbstractController
             'numero' => $numero,
         ]);
     }
+
+    public function suma($numero1, $numero2)
+    {
+        return $this->render('sorteo/suma.html.twig', [
+            'numero1' => $numero1,
+            'numero2' => $numero2,
+            'resultado' => $numero1 + $numero2,
+        ]);
+    }
 }
