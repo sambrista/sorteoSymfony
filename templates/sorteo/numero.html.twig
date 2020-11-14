@@ -6,3 +6,7 @@
 {% block contenido %}
 <h1>El resultado del sorteo es: {{ numero }}</h1>
 {% endblock %}
+
+{% block sidebar %}
+{{ include('sorteo/menu.html.twig', { 'seccionActual': "numero" }) }}
+{% endblock %}

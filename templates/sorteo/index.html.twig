@@ -6,3 +6,7 @@
 {% block contenido %}
 <h1>Bienvenido a Sorteo Symfony</h1>
 {% endblock %}
+
+{% block sidebar %}
+{{ include('sorteo/menu.html.twig', { 'seccionActual': "inicio" }) }}
+{% endblock %}
