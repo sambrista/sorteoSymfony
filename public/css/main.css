@@ -1,0 +1,40 @@
+.actual {
+    font-weight: bold;
+}
+
+#sidebar {
+    float: left;
+    border: 2px dashed #CCC;
+    padding: 20px;
+    width: 200px;
+}
+
+#sidebar h2 {
+    text-align: center;
+}
+
+#sidebar ul {
+    padding: 0px;
+}
+
+#sidebar ul li {
+    list-style: none;
+    margin: 8px 0px;
+}
+
+#sidebar ul li a {
+    padding: 4px 10px;
+    display: block;
+    background-color: #DDD;
+    color: #666;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    background-color: #666;
+    color: #DDD;
+}
+
+#contenido {
+    margin-left: 260px;
+}
