@@ -71,21 +71,25 @@ class SorteoController extends AbstractController
 
     public function nuevaApuesta(Request $request)
     {
+
         $apuesta = new Apuesta();
-        /* Descomenta las siguientes líneas para rellenar la apuesta
-           con información de prueba en lugar de estar vacía */
-        // $apuesta->setTexto('2 13 34 44 48');
-        // $apuesta->setFecha(new \DateTime('tomorrow'));
 
         $form = $this->createFormBuilder($apuesta)
             ->add('texto', TextType::class)
             ->add('fecha', DateType::class)
-            ->add(
-                'save',
-                SubmitType::class,
-                array('label' => 'Añadir Apuesta')
-            )
+            ->add('save', SubmitType::class,
+                   array('label' => 'Añadir Apuesta'))
             ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // De esta manera podemos rellenar la variable $apuesta
+            // con los datos del formulario.
+            $apuesta = $form->getData();
+            // Ahora podríamos guardarla en la base de datos, redirigir
+            // a una página de confirmación, crear un mensaje...
+        }
 
         return $this->render('sorteo/nuevaApuesta.html.twig', array(
             'form' => $form->createView(),
