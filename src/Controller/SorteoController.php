@@ -2,6 +2,11 @@
 // src/Controller/SorteoController.php
 namespace App\Controller;
 
+use App\Entity\Apuesta;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SorteoController extends AbstractController
@@ -40,7 +45,7 @@ class SorteoController extends AbstractController
         $estrellas = array();
         $i = 0;
         while ($i < 5) {
-            $numero = random_int(1,50);
+            $numero = random_int(1, 50);
             if (!in_array($numero, $numeros)) {
                 $numeros[] = $numero;
                 $i++;
@@ -50,7 +55,7 @@ class SorteoController extends AbstractController
 
         $i = 0;
         while ($i < 2) {
-            $estrella = random_int(1,12);
+            $estrella = random_int(1, 12);
             if (!in_array($estrella, $estrellas)) {
                 $estrellas[] = $estrella;
                 $i++;
@@ -62,5 +67,28 @@ class SorteoController extends AbstractController
             'estrellas' => $estrellas,
             'numeros' => $numeros
         ]);
+    }
+
+    public function nuevaApuesta(Request $request)
+    {
+        $apuesta = new Apuesta();
+        /* Descomenta las siguientes líneas para rellenar la apuesta
+           con información de prueba en lugar de estar vacía */
+        // $apuesta->setTexto('2 13 34 44 48');
+        // $apuesta->setFecha(new \DateTime('tomorrow'));
+
+        $form = $this->createFormBuilder($apuesta)
+            ->add('texto', TextType::class)
+            ->add('fecha', DateType::class)
+            ->add(
+                'save',
+                SubmitType::class,
+                array('label' => 'Añadir Apuesta')
+            )
+            ->getForm();
+
+        return $this->render('sorteo/nuevaApuesta.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
