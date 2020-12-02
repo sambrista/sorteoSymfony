@@ -9,7 +9,7 @@
 
 ## Comprobación de un punto concreto
 
-En el [apartado de tags del repositorio](https://github.com/sambrista/sorteoSymfony/tags) se pueden encontrar etiquetas para comprobar cong ``git checkout`` el estado del proyecto al concluir una sección o un ejercicio. Si por ejemplo queremos comprobar cómo debe quedar el proyecto al terminar el Ejercico 5.7 deberemos ejecutar la siguiente instrucción:
+En el [apartado de tags del repositorio](https://github.com/sambrista/sorteoSymfony/tags) se pueden encontrar etiquetas para comprobar cong ``git checkout`` el estado del proyecto al concluir una sección o un ejercicio. Si por ejemplo queremos comprobar cómo debe quedar el proyecto al terminar el Ejercicio 5.7 (cuya etiqueta es ``Ejercicio-5.7``) deberemos ejecutar la siguiente instrucción:
 
 ```bash
 git checkout tags/Ejercicio-5.7
