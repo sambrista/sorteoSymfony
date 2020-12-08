@@ -80,8 +80,11 @@ class SorteoController extends AbstractController
         $form = $this->createFormBuilder($apuesta)
             ->add('texto', TextType::class)
             ->add('fecha', DateType::class)
-            ->add('save', SubmitType::class,
-                  array('label' => 'Añadir Apuesta'))
+            ->add(
+                'save',
+                SubmitType::class,
+                array('label' => 'Añadir Apuesta')
+            )
             ->getForm();
 
         $form->handleRequest($request);
@@ -113,5 +116,41 @@ class SorteoController extends AbstractController
     public function apuestaCreada()
     {
         return $this->render('sorteo/apuestaCreada.html.twig');
+    }
+
+    public function verApuesta($id)
+    {
+        // Obtenemos el gestor de entidades de Doctrine
+        $entityManager = $this->getDoctrine()->getManager();
+
+        /* Obtenenemos el repositorio de Apuestas y
+           buscamos en el usando la id de la apuesta */
+        $apuesta = $entityManager->getRepository(Apuesta::class)->find($id);
+
+        // Si la apuesta no existe lanzamos una excepción.
+        if (!$apuesta) {
+            throw $this->createNotFoundException(
+                'No existe ninguna apuesta con id ' . $id
+            );
+        }
+
+        /* Pasamos la apuesta a una plantilla que
+           se encargue de mostrar sus datos. */
+        return $this->render('sorteo/verApuesta.html.twig', array(
+            'apuesta' => $apuesta,
+        ));
+    }
+    
+    public function listaApuestas()
+    {
+        // Obtenemos el gestor de entidades de Doctrine
+        $entityManager = $this->getDoctrine()->getManager();
+
+        // obtenemos todas las apuestas
+        $apuestas = $entityManager->getRepository(Apuesta::class)->findAll();
+
+        return $this->render('sorteo/listaApuestas.html.twig', array(
+            'apuestas' => $apuestas,
+        ));
     }
 }

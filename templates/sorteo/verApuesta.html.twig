@@ -1,0 +1,10 @@
+{# templates/sorteo/verApuesta.html.twig #}
+{% extends 'sorteo/estructuraBase.html.twig' %}
+{% block contenido %}
+<h1>Apuesta #{{apuesta.id}}</h1>
+Apuesta: {{ apuesta.texto }} ({{ apuesta.fecha|date("d/m/Y") }})
+{% endblock %}
+{% block titulo %}Apuesta {{apuesta.id}}{% endblock %}
+{% block sidebar %}
+  {{ include('sorteo/menu.html.twig', { 'seccionActual': "apuestas" }) }}
+{% endblock %}
