@@ -2,7 +2,8 @@
 {% extends 'sorteo/estructuraBase.html.twig' %}
 {% block contenido %}
 <h1>Apuesta #{{apuesta.id}}</h1>
-Apuesta: {{ apuesta.texto }} ({{ apuesta.fecha|date("d/m/Y") }})
+<p>Apuesta: {{ apuesta.texto }} ({{ apuesta.fecha|date("d/m/Y") }})</p>
+<p><a href="{{ path('app_apuesta_editar', {'id' : apuesta.id}) }}">Editar</a></p>
 {% endblock %}
 {% block titulo %}Apuesta {{apuesta.id}}{% endblock %}
 {% block sidebar %}
