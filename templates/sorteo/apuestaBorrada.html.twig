@@ -1,0 +1,9 @@
+{# templates/sorteo/apuestaBorrada.html.twig #}
+{% extends 'sorteo/estructuraBase.html.twig' %}
+{% block contenido %}
+<strong>Su apuesta ha sido borrada correctamente</strong>
+{% endblock %}
+{% block titulo %}Borrar apuesta{% endblock %}
+{% block sidebar %}
+  {{ include('sorteo/menu.html.twig', { 'seccionActual': "apuestas" }) }}
+{% endblock %}
