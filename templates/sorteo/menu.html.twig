@@ -17,3 +17,11 @@
             <a href="{{ path('app_nueva_apuesta') }}">Nueva Apuesta</a>
         </li>
     </ul>
+
+    {% if is_granted('ROLE_USER') %}
+    <h3>Hola {{ app.user.nombre }}</h3>
+    <p><small>Sesión iniciada como {{ app.user.email }}</small></p>
+    <p><a href="{{ path("app_logout") }}">Cerrar sesión</a></p>
+    {% else %}
+    <p><a href="{{ path("app_login") }}">Iniciar sesión</a></p>
+    {% endif %}
