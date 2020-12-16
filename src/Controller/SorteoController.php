@@ -104,8 +104,13 @@ class SorteoController extends AbstractController
             // Ejecuta las consultas necesarias
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Apuesta añadida con éxito'
+            );
+
             //Redirigimos a una página de confirmación.
-            return $this->redirectToRoute('app_apuesta_creada');
+            return $this->redirectToRoute('app_apuesta_ver', array('id'=>$apuesta->getId()));
         }
 
         return $this->render('sorteo/nuevaApuesta.html.twig', array(
@@ -185,6 +190,11 @@ class SorteoController extends AbstractController
             // Ejecuta las consultas necesarias (UPDATE en este caso)
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                '¡Apuesta editada correctamente!'
+            );
+
             //Redirigimos a la página de ver la apuesta editada.
             return $this->redirectToRoute('app_apuesta_ver', array('id'=>$id));
         }
@@ -210,6 +220,10 @@ class SorteoController extends AbstractController
         }
         $entityManager->remove($apuesta);
         $entityManager->flush();
-        return $this->render('sorteo/apuestaBorrada.html.twig');
+        $this->addFlash(
+            'notice',
+            '¡Apuesta borrada con éxito!'
+        );
+        return $this->redirectToRoute('app_apuesta_lista');
     }
 }
