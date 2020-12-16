@@ -103,13 +103,14 @@ class SorteoController extends AbstractController
 
             // Ejecuta las consultas necesarias
             $entityManager->flush();
-
+            
+            // Añadimos un mensaje de éxito.
             $this->addFlash(
-                'notice',
+                'success',
                 'Apuesta añadida con éxito'
             );
 
-            //Redirigimos a una página de confirmación.
+            // Redirigimos a la página que muestra la noticia creada.
             return $this->redirectToRoute('app_apuesta_ver', array('id'=>$apuesta->getId()));
         }
 
@@ -190,8 +191,9 @@ class SorteoController extends AbstractController
             // Ejecuta las consultas necesarias (UPDATE en este caso)
             $entityManager->flush();
 
+            // Añadimos un mensaje de éxito.
             $this->addFlash(
-                'notice',
+                'success',
                 '¡Apuesta editada correctamente!'
             );
 
@@ -220,10 +222,14 @@ class SorteoController extends AbstractController
         }
         $entityManager->remove($apuesta);
         $entityManager->flush();
+
+        // Añadimos un mensaje de éxito.
         $this->addFlash(
-            'notice',
+            'success',
             '¡Apuesta borrada con éxito!'
         );
+
+        // Redirigimos a la lista de apuestas
         return $this->redirectToRoute('app_apuesta_lista');
     }
 }

@@ -9,13 +9,11 @@
         {% endblock %}
     </head>
     <body>
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="flash flash-{{ label }}">
-                {{ message }}
-            </div>
+        {% for etiqueta, mensajes in app.flashes %}
+            {% for mensaje in mensajes %}
+        <div class="flash flash-{{ etiqueta }}">{{ mensaje }}</div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
         <div id="sidebar">
             {% block sidebar %}
             {{ include('sorteo/menu.html.twig', { 'seccionActual': "inicio" }) }}
